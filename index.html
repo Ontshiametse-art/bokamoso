@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SA Bursaries 2027 — Still Open</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:#1a2420; --muted:#5a665e; --paper:#eef2ee; --line:#c8d2c9;
+      --accent:#0f5c45; --accent-soft:#d4ebe1; --urgent:#9b1c1c; --urgent-soft:#fee2e2;
+      --soon:#9a3412; --soon-soft:#ffedd5; --card:#fbfcfa; --shadow:0 10px 30px rgb(26 36 32 / 6%);
+      --info:#0c4a6e; --info-soft:#e0f2fe; --fac:#5b21b6; --fac-soft:#ede9fe;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;font-family:Outfit,system-ui,sans-serif;color:var(--ink);background:radial-gradient(1100px 520px at 8% -8%,#d7e8df 0%,transparent 55%),radial-gradient(900px 480px at 100% 0%,#e4e0d4 0%,transparent 48%),linear-gradient(180deg,#f4f6f3,var(--paper));line-height:1.45}
+    .wrap{width:min(980px,calc(100% - 1.5rem));margin:0 auto;padding:1.75rem 0 3.5rem}
+    .hero{margin-bottom:1.35rem;animation:rise .55s ease both}
+    .eyebrow{margin:0 0 .45rem;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+    h1{font-family:Fraunces,Georgia,serif;font-size:clamp(2rem,5vw,3.05rem);line-height:1.05;margin:0 0 .55rem;letter-spacing:-.02em}
+    .lede{margin:0;color:var(--muted);max-width:46rem}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin:1.35rem 0 1.1rem;animation:rise .55s ease .08s both}
+    .stat{background:rgb(255 255 255 / 72%);border:1px solid var(--line);border-radius:14px;padding:.85rem .95rem;box-shadow:var(--shadow)}
+    .stat strong{display:block;font-family:Fraunces,Georgia,serif;font-size:1.55rem;line-height:1;margin-bottom:.25rem}
+    .stat span{color:var(--muted);font-size:.82rem}
+    .stat.warn strong{color:var(--soon)}
+    .controls{display:grid;gap:.7rem;margin-bottom:1rem;padding:.95rem;background:rgb(255 255 255 / 70%);border:1px solid var(--line);border-radius:16px;animation:rise .55s ease .14s both}
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+    .chip{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:.42rem .8rem;font:600 .86rem Outfit,sans-serif;cursor:pointer}
+    .chip:hover{color:var(--ink);border-color:#aab8ae}
+    .chip.active{background:var(--ink);border-color:var(--ink);color:#f4f7f4}
+    .fields{display:grid;grid-template-columns:minmax(140px,200px) 1fr;gap:.65rem}
+    label.field{display:grid;gap:.3rem}
+    label.field span{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:.65rem .75rem;font:500 .95rem Outfit,sans-serif;color:var(--ink);background:#fff}
+    .count{color:var(--muted);font-size:.92rem;margin:0 0 .85rem}
+    .list{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.05rem 1.05rem;box-shadow:var(--shadow);animation:rise .4s ease both}
+    .card:hover{transform:translateY(-2px);border-color:#aebcb2}
+    .card.closed{opacity:.62}
+    .top{display:flex;justify-content:space-between;gap:.75rem;align-items:flex-start;margin-bottom:.45rem}
+    .sid{font-family:ui-monospace,Menlo,monospace;font-size:.78rem;color:var(--muted);font-weight:600}
+    .badges{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:flex-end}
+    .badge{font-size:.72rem;font-weight:700;border-radius:999px;padding:.22rem .55rem}
+    .badge-year{background:var(--accent-soft);color:var(--accent)}
+    .badge-level{background:var(--info-soft);color:var(--info)}
+    .badge-ok{background:#dcfce7;color:#166534}
+    .badge-check{background:#f3f4f6;color:#4b5563}
+    .badge-urgent{background:var(--urgent-soft);color:var(--urgent)}
+    .badge-soon{background:var(--soon-soft);color:var(--soon)}
+    .badge-closed{background:#e5e7eb;color:#374151}
+    .card h2{margin:0 0 .15rem;font-family:Fraunces,Georgia,serif;font-size:1.18rem;line-height:1.2}
+    .sponsor{margin:0 0 .25rem;color:var(--accent);font-weight:600;font-size:.92rem}
+    .fac-line{margin:0 0 .5rem;font-size:.88rem;color:var(--fac);font-weight:600}
+    .dates{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:0 0 .65rem}
+    .date-box{padding:.55rem .7rem;background:#f3f7f4;border:1px solid #d5e0d8;border-radius:10px}
+    .date-box span{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+    .date-box strong{font-size:.95rem}
+    .fields-line,.cover{margin:0 0 .4rem;font-size:.92rem}
+    .notes{margin:0 0 .75rem;color:#3f4a43;font-size:.9rem}
+    .docs{margin:0 0 .9rem;padding:.75rem .85rem;background:#f3f7f4;border:1px solid #d5e0d8;border-radius:12px}
+    .docs h3{margin:0 0 .45rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .docs ul{margin:0;padding-left:1.1rem}
+    .docs li{margin:.2rem 0;font-size:.9rem}
+    .actions{display:flex;gap:.5rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:var(--accent);color:#f4faf7;border-radius:999px;padding:.55rem 1rem;font:700 .9rem Outfit,sans-serif}
+    .btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .empty{text-align:center;color:var(--muted);padding:2.5rem 1rem;border:1px dashed var(--line);border-radius:16px}
+    .foot{margin-top:1.5rem;color:var(--muted);font-size:.82rem}
+    .loading{padding:2rem;text-align:center;color:var(--muted)}
+    @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.fields,.dates{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="eyebrow">South Africa · Undergraduates · Still open · Nov 2026</p>
+      <h1>Bursaries still open</h1>
+      <p class="lede">
+        Undergraduate bursaries still accepting applications right now — opening dates, closing dates,
+        what you need to apply, and links to the real portals. NSFAS 2027 already closed (31 Oct).
+      </p>
+    </header>
+    <section class="stats">
+      <div class="stat"><strong id="stat-open">—</strong><span>Still open</span></div>
+      <div class="stat warn"><strong id="stat-soon">—</strong><span>Close in 14 days</span></div>
+      <div class="stat"><strong id="stat-verified">—</strong><span>Portal verified</span></div>
+      <div class="stat"><strong id="stat-checked">—</strong><span>Last checked</span></div>
+    </section>
+    <section class="controls">
+      <div class="chips" id="status-chips"></div>
+      <div class="chips" id="field-chips"></div>
+      <div class="fields">
+        <label class="field"><span>Level</span>
+          <select id="level">
+            <option value="all">All levels</option>
+            <option value="undergrad" selected>Undergraduate</option>
+            <option value="postgrad">Postgraduate</option>
+            <option value="other">Other / rolling</option>
+          </select>
+        </label>
+        <label class="field"><span>Search</span>
+          <input id="search" type="search" placeholder="Sponsor, StudyTrust, engineering, CA…" />
+        </label>
+      </div>
+    </section>
+    <p class="count">Showing <strong id="shown">0</strong> · soonest deadlines first</p>
+    <ul class="list" id="list"><li class="loading">Loading bursaries…</li></ul>
+    <p class="foot" id="foot">Tip: one StudyTrust application can cover Standard Bank, Amazon, Toyota, Santam, Investec and more.</p>
+  </div>
+  <script>
+    const state = { status: "open", field: "all", level: "undergrad", query: "" };
+    let UPDATED_AT = "2026-09-21";
+    let BURSARIES = [];
+
+    const FIELD_FILTERS = [
+      { id: "all", label: "All fields" },
+      { id: "engineering", label: "Engineering" },
+      { id: "accounting", label: "Accounting / CA" },
+      { id: "finance", label: "Finance / Economics" },
+      { id: "it", label: "IT / Data" },
+      { id: "law", label: "Law" },
+      { id: "health", label: "Health" },
+      { id: "agriculture", label: "Agriculture" },
+      { id: "environment", label: "Environment / Water" },
+      { id: "stem", label: "STEM general" },
+      { id: "studytrust", label: "StudyTrust-facilitated" },
+    ];
+
+    function daysUntil(iso) {
+      if (!iso) return null;
+      const end = new Date(iso + "T23:59:59");
+      if (Number.isNaN(end.getTime())) return null;
+      return Math.ceil((end.getTime() - Date.now()) / 86400000);
+    }
+    function isClosed(b) {
+      if (!b.closesSort) return false;
+      const d = daysUntil(b.closesSort);
+      return d !== null && d < 0;
+    }
+    function fieldMatch(b, field) {
+      if (field === "all") return true;
+      if (field === "studytrust") return (b.facilitator || "").toLowerCase().includes("studytrust");
+      const t = (b.fields + " " + b.programme + " " + b.notes + " " + (b.facilitator || "")).toLowerCase();
+      const map = {
+        engineering: ["engineering", "civil", "mechanical", "electrical", "mining", "chemical", "mechatronic"],
+        accounting: ["accounting", "ca stream", "chartered", "audit", "cta"],
+        finance: ["finance", "economics", "investment", "treasury", "banking", "actuarial", "risk"],
+        it: ["information technology", "computer", "data science", "it/", "cloud", "aws", "software", "informatics"],
+        law: ["law", "llb", "legal"],
+        health: ["health", "medicine", "nursing", "pharmacy", "medical"],
+        agriculture: ["agriculture", "agri", "veterinary", "forestry", "fisher"],
+        environment: ["environment", "water", "sanitation", "disaster", "climate", "forestry"],
+        stem: ["stem", "science", "technology", "math", "physics", "chemistry", "engineering", "data"],
+      };
+      return (map[field] || []).some((k) => t.includes(k));
+    }
+    function levelMatch(b, level) {
+      if (level === "all") return true;
+      const t = (b.level || "").toLowerCase();
+      if (level === "undergrad") return t.includes("undergrad") || t.includes("matric") || t.includes("1st year") || t.includes("2nd") || t.includes("high school");
+      if (level === "postgrad") return t.includes("postgrad") || t.includes("honour") || t.includes("master") || t.includes("pg ");
+      return t.includes("rolling") || t.includes("graduate") || t.includes("skills");
+    }
+    function filtered() {
+      const q = state.query.trim().toLowerCase();
+      return BURSARIES.filter((b) => {
+        const closed = isClosed(b);
+        const d = daysUntil(b.closesSort);
+        const soon = d !== null && d >= 0 && d <= 14;
+        if (state.status === "open" && closed) return false;
+        if (state.status === "closed" && !closed) return false;
+        if (state.status === "soon" && !soon) return false;
+        if (state.status === "verified" && !b.verified) return false;
+        if (!fieldMatch(b, state.field)) return false;
+        if (!levelMatch(b, state.level)) return false;
+        if (!q) return true;
+        const blob = [b.programme, b.sponsor, b.facilitator, b.fields, b.notes, b.level, b.coverage, b.opens, ...(b.documents || [])].join(" ").toLowerCase();
+        return blob.includes(q);
+      }).sort((a, b) => {
+        if (!a.closesSort && !b.closesSort) return a.id - b.id;
+        if (!a.closesSort) return 1;
+        if (!b.closesSort) return -1;
+        const by = a.closesSort.localeCompare(b.closesSort);
+        return by !== 0 ? by : a.programme.localeCompare(b.programme);
+      });
+    }
+    function makeChips(el, items, key) {
+      el.innerHTML = "";
+      items.forEach((item) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip" + (state[key] === item.id ? " active" : "");
+        btn.textContent = item.label;
+        btn.onclick = () => { state[key] = item.id; render(); };
+        el.appendChild(btn);
+      });
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function render() {
+      document.getElementById("stat-open").textContent = BURSARIES.filter((b) => !isClosed(b)).length;
+      document.getElementById("stat-soon").textContent = BURSARIES.filter((b) => {
+        const d = daysUntil(b.closesSort);
+        return d !== null && d >= 0 && d <= 14;
+      }).length;
+      document.getElementById("stat-verified").textContent = BURSARIES.filter((b) => b.verified).length;
+      document.getElementById("stat-checked").textContent = new Date(UPDATED_AT + "T12:00:00").toLocaleDateString("en-ZA", { day: "numeric", month: "short" });
+      makeChips(document.getElementById("status-chips"), [
+        { id: "open", label: "Open" },
+        { id: "soon", label: "Closing ≤14 days" },
+        { id: "verified", label: "Portal verified" },
+        { id: "closed", label: "Closed" },
+        { id: "all", label: "All" },
+      ], "status");
+      makeChips(document.getElementById("field-chips"), FIELD_FILTERS, "field");
+      const rows = filtered();
+      document.getElementById("shown").textContent = String(rows.length);
+      document.getElementById("foot").textContent =
+        `Checked ${UPDATED_AT}. Tip: one StudyTrust application can cover Standard Bank, Amazon, Toyota, Santam, Investec and more.`;
+      const list = document.getElementById("list");
+      if (!rows.length) {
+        list.innerHTML = `<li class="empty">No bursaries match these filters.</li>`;
+        return;
+      }
+      list.innerHTML = rows.map((b, i) => {
+        const d = daysUntil(b.closesSort);
+        const closed = isClosed(b);
+        const urgent = d !== null && d >= 0 && d <= 7;
+        const soonBadge = d !== null && d > 7 && d <= 14;
+        let statusBadge = "";
+        if (closed) statusBadge = `<span class="badge badge-closed">Closed</span>`;
+        else if (!b.closesSort) statusBadge = `<span class="badge badge-soon">Rolling</span>`;
+        else if (urgent) statusBadge = `<span class="badge badge-urgent">${d === 0 ? "Closes today" : d + "d left"}</span>`;
+        else if (soonBadge) statusBadge = `<span class="badge badge-soon">${d}d left</span>`;
+        const docs = (b.documents || []).map((doc) => `<li>${esc(doc)}</li>`).join("");
+        const info = b.infoUrl && b.infoUrl !== b.url
+          ? `<a class="btn secondary" href="${esc(b.infoUrl)}" target="_blank" rel="noreferrer">More info</a>`
+          : "";
+        return `<li class="card${closed ? " closed" : ""}" style="animation-delay:${Math.min(i, 12) * 0.03}s">
+          <div class="top"><span class="sid">#${b.id}</span>
+            <div class="badges">
+              <span class="badge badge-year">2027</span>
+              <span class="badge badge-level">${esc(b.level)}</span>
+              ${b.verified ? `<span class="badge badge-ok">Portal verified</span>` : `<span class="badge badge-check">Confirm portal</span>`}
+              ${statusBadge}
+            </div>
+          </div>
+          <h2>${esc(b.programme)}</h2>
+          <p class="sponsor">${esc(b.sponsor)}</p>
+          <p class="fac-line">Apply via: ${esc(b.facilitator || "See portal")}</p>
+          <div class="dates">
+            <div class="date-box"><span>Opens</span><strong>${esc(b.opens || "See portal")}</strong></div>
+            <div class="date-box"><span>Closes</span><strong>${esc(b.closes)}</strong></div>
+          </div>
+          <p class="fields-line"><strong>Fields:</strong> ${esc(b.fields)}</p>
+          <p class="cover"><strong>Covers:</strong> ${esc(b.coverage)}</p>
+          <p class="notes">${esc(b.notes)}</p>
+          <div class="docs"><h3>What students need to apply</h3><ul>${docs}</ul></div>
+          <div class="actions">
+            <a class="btn" href="${esc(b.url)}" target="_blank" rel="noreferrer">Apply on portal</a>
+            ${info}
+          </div>
+        </li>`;
+      }).join("");
+    }
+
+    document.getElementById("level").onchange = (e) => { state.level = e.target.value; render(); };
+    document.getElementById("search").oninput = (e) => { state.query = e.target.value; render(); };
+
+    fetch("./bursaries.json")
+      .then((r) => r.json())
+      .then((data) => {
+        UPDATED_AT = data.updatedAt || UPDATED_AT;
+        BURSARIES = data.bursaries || [];
+        render();
+      })
+      .catch(() => {
+        document.getElementById("list").innerHTML =
+          `<li class="empty">Could not load bursaries.json — serve this folder over HTTP (not as a raw file).</li>`;
+      });
+  </script>
+</body>
+</html>
